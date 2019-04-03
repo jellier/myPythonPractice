@@ -10,7 +10,10 @@
 # file2.close()
 
 # 给文件追加内容
-file3 = open('testFile.txt', 'w')
+file3 = open('testFile.txt', 'a')
+file3.write('王小林\n')
+file3.write('王小林\n')
+file3.write('王小林\n')
 file3.write('王小林')
 # 如何在'a'模式下使用read?
 # print(file3.read())   w或a模式下不可read,读写模式不可同时存在
@@ -23,7 +26,14 @@ file3.close()
 
 # seek的使用
 # seek的参数，第一个代表偏移量，第二个可使用0、1、2。0代表从头开始，1代表从当前指针开始，2代表从结尾开始
-file4 = open('testFile.txt','rb+')
-file4.write(b'0123456789abcdef')
-print(file4.seek(4))
-print(file4.seek(-8,2))
+# file4 = open('testFile.txt','rb+')
+# file4.write(b'0123456789abcdef')
+# print(file4.seek(4))
+# print(file4.seek(-8,2))
+
+#readlines的使用
+file5 = open('testFile.txt')
+for line in file5.readlines():
+    print(line)
+    print('======')
+file5.close()
