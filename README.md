@@ -5,7 +5,9 @@
 > json格式{'x':1,'y':2}在python里面叫字典
 
 ### 待解决的疑问：
-> filter lambda
+##### filter lambda
+##### with open的使用？
+##### re库的用法？
 
 ### 文件操作的代码
 > file_op.py,主要是read,writ,close的使用
@@ -23,6 +25,11 @@ finally:
 
 ### 函数
 #### 常用操作
+<pre><code>
+def funcName:
+    ****
+    return ***
+</code></pre>
 #### 可变长参数
 #### 迭代器和生成器
 #### lambda
