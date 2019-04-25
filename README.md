@@ -48,3 +48,20 @@ lambda x : x+1
 > reduce() 需要使用"from functools import reduce"
 
 > zip()
+
+###模块的使用
+> import 模块名
+> import 模块名 as 缩略名
+> from 模块名 import 函数名
+ <pre><code>
+import time
+import time as t
+form time import sleep
+</code></pre>
+### PEP8
+> PEP8的规范：https://www.python.org/dev/peps/pep-0008/
+
+> 也在终端使用pip3安装autoPEP8，然后在pycharm中的扩展工具中加入autopep8
+<pre><code>
+pip3 install autopep8
+</code></pre>
