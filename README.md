@@ -65,3 +65,6 @@ form time import sleep
 <pre><code>
 pip3 install autopep8
 </code></pre>
+
+### 类
+#### 面向过程和面向对象
