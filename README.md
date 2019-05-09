@@ -22,7 +22,13 @@ except Exception:
 finally:
     <无论异常是否发生都执行>
 </code></pre>
-
+raise可以用来自定义错误提示信息
+<pre><code>
+try:
+    raise NameError('my custom error')
+except NameError:
+    print('error')
+</code></pre>
 ### 函数
 #### 常用操作
 <pre><code>
