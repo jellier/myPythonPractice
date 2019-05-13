@@ -45,8 +45,9 @@ class Monster():
     def whoami(self):
         print('我是Monster类')
 
+
 # 继承和多态都是面向对象编程的重要特征
-# Monster的子类
+# Monster的子类,Monster作为参数传给子类
 
 
 class AnimalsMoster(Monster):
