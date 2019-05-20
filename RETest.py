@@ -1,5 +1,5 @@
 # 正则表达式库re的用法
-
+# https://www.cnblogs.com/zjltt/p/6955965.html
 # 第一步：导入re
 import re
 
@@ -119,7 +119,6 @@ print('n的值是：%s' % n)
 #
 # 注意：match()函数 与 search()函数基本是一样的功能，不一样的就是match()匹配字符串开始位置的一个符合规则的字符串，search()是在字符串全局匹配第一个合规则的字符串
 
-# match函数里面的分组概念是什么？
 
 #无分组
 origin = "hello egon bcd egon lge egon acd 19"
