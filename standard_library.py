@@ -20,22 +20,25 @@
 # ^$  空行，什么文本都没有
 # .*? 不使用贪婪模式
 
+import random
+import datetime
+import time
 import re
+print('=============reR================')
 # p = re.compile('..')
 p = re.compile('.{3}')
 print(p.match('abc'))
 
 # r代表原样输出，不要进行转义，比如不要去掉\n print(r'\nx\n')
-# p2 = re.compile(r'\d{4}-\d{1,2}-\d{1,2}')
+# print(r'\nx\n')
 
 # ()代表分组，和group配合使用
+# p2 = re.compile(r'\d{4}-\d{1,2}-\d{1,2}')
 p2 = re.compile(r'(\d{4})-(\d{1,2})-(\d{1,2})')
 print('不分组：', p2.match('2019-5-20'))
 print('group分组：', p2.match('2019-5-20').group())
 print('group分组取其中一组：', p2.match('2019-5-20').group(1))
 print('groups分组可以取全部分组：', p2.match('2019-5-20').groups())
-
-# print(r'\nx\n')
 
 
 # match()函数 与 search()函数基本是一样的功能，
@@ -43,11 +46,60 @@ print('groups分组可以取全部分组：', p2.match('2019-5-20').groups())
 print('match:', p2.match('aa2019-5-20bb'))
 print('search:', p2.search('aa2019-5-20bb'))
 
-phone = '135-0004-9999 #这是我的电话号码'
+# sub函数是re模块中非常有用的方法，主要功能是替换原字符串中的部分字符
 # 把"#这是我的电话号码去掉"
 # sub有三个参数，第一个是匹配规则，第二个是要替换成的字符串/格式，第三个是需要被修改的字符串
-p3 = re.sub(r'#.*$','',phone)
+phone = '135-0004-9999 #这是我的电话号码'
+p3 = re.sub(r'#.*$', '', phone)
 print(p3)
 # 把上面的电话号码中的-去掉
-p4 = re.sub(r'-','',p3)
+p4 = re.sub(r'-', '', p3)
 print(p4)
+
+
+# time和datetime模块
+# time用于日期和时间的查看，datetime用于日期和时间的修改，比如获得十分钟后的时间
+print('=============time================')
+print(time.time())
+print(time.localtime())
+print(time.strftime('%Y-%m-%d %H:%M:%S'))
+print(time.strftime('%Y%m%d'))
+
+print('=============datetime================')
+nowtime = datetime.datetime.now()
+print('当前时间是：', nowtime)
+# 获得10分钟后的时间
+newtime = datetime.timedelta(minutes=10)
+print('10 分钟后是：', nowtime + newtime)
+
+# 求某天后10天是哪一天
+one_day = datetime.datetime(2008, 5, 27)
+new_date = datetime.timedelta(days=10)
+print('oneday 10天后是：', one_day + new_date)
+
+
+# 数学相关的库：math和random
+# 数学相关库主要用在机器学习和深度学习中
+# 比如math中的sin 和 cos的计算
+# random经常用于软件测试
+print('=============math================')
+print('random随机取整数', random.randint(1, 5))
+print('random随机取字符串', random.choice(['aa', 'bb', 'cc']))
+
+
+print('=============file================')
+# os.path 和 pathlib
+# pathlib: https://docs.python.org/3/library/pathlib.html
+import os
+print('当前路径：',os.path.abspath('.'))   # 根据相对路径获取绝对路径
+print('上一级路径：',os.path.abspath('..'))
+print('Users目录是否存在：',os.path.exists('/Users'))
+print('Users目录是否是目录：',os.path.isdir('/Users'))
+# os.path.join('tmp/a','b/c')   连接路径
+
+
+from pathlib import Path
+p = Path('.')
+print(p.resolve()) #相当于os.path.abspath
+
+
