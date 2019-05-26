@@ -20,6 +20,8 @@
 # ^$  空行，什么文本都没有
 # .*? 不使用贪婪模式
 
+from pathlib import Path
+import os
 import random
 import datetime
 import time
@@ -57,13 +59,22 @@ p4 = re.sub(r'-', '', p3)
 print(p4)
 
 
+
+
 # time和datetime模块
 # time用于日期和时间的查看，datetime用于日期和时间的修改，比如获得十分钟后的时间
+
 print('=============time================')
 print(time.time())
-print(time.localtime())
-print(time.strftime('%Y-%m-%d %H:%M:%S'))
-print(time.strftime('%Y%m%d'))
+print('localtime：', time.localtime())  # 返回一个time.struct_time时间元组
+print('localtime.tm_year：', time.localtime().tm_year)
+print(
+    'asctime 本地时间为：',
+    time.asctime(
+        time.localtime(
+            time.time())))  # asctime()是最简单的获取可读的时间模式的函数
+print('strftime：', time.strftime('%Y-%m-%d %H:%M:%S'))  # strftime 方法可以用来格式化日期
+print('strftime：', time.strftime('%Y%m%d'))
 
 print('=============datetime================')
 nowtime = datetime.datetime.now()
@@ -90,16 +101,12 @@ print('random随机取字符串', random.choice(['aa', 'bb', 'cc']))
 print('=============file================')
 # os.path 和 pathlib
 # pathlib: https://docs.python.org/3/library/pathlib.html
-import os
-print('当前路径：',os.path.abspath('.'))   # 根据相对路径获取绝对路径
-print('上一级路径：',os.path.abspath('..'))
-print('Users目录是否存在：',os.path.exists('/Users'))
-print('Users目录是否是目录：',os.path.isdir('/Users'))
+print('当前路径：', os.path.abspath('.'))   # 根据相对路径获取绝对路径
+print('上一级路径：', os.path.abspath('..'))
+print('Users目录是否存在：', os.path.exists('/Users'))
+print('Users目录是否是目录：', os.path.isdir('/Users'))
 # os.path.join('tmp/a','b/c')   连接路径
 
 
-from pathlib import Path
 p = Path('.')
-print(p.resolve()) #相当于os.path.abspath
-
-
+print(p.resolve())  # 相当于os.path.abspath
