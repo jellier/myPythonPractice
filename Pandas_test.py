@@ -1,4 +1,5 @@
 from pandas import Series, DataFrame
+import numpy as np
 import pandas as pd
 
 # pandas简介：
@@ -10,8 +11,9 @@ import pandas as pd
 
 # Series对numpy的array进行了封装，对所有的数值添加了一个索引
 # Series是对一维数组进行的操作
-print('===============Series==================')
 
+print('===============Series==================')
+# Creating a Series by passing a list of values, letting pandas create a default integer index:
 obj = Series([4, 5, 6, -7])
 print(obj)
 
@@ -102,7 +104,7 @@ print('fillna:',data2.fillna(0, inplace=True))
 print('data2:', data2)
 
 print('===============层次化索引==================')
-import numpy as np
+
 # 层次化索引，可以根据索引的层次来提取数据
 data3 = Series(np.random.randn(10),
                index=[['a', 'a', 'a', 'b', 'b', 'b', 'c', 'c', 'd', 'd'],
@@ -117,9 +119,37 @@ print(data3.unstack())
 # 再转化回series
 print(data3.unstack().stack())
 
+print('=======================================')
+
+
+# Creating a DataFrame by passing a NumPy array, with a datetime index and labeled columns:
+dates = pd.date_range('20130101', periods=12)
+
+print(dates)
+
+df = pd.DataFrame(np.random.randn(12, 4), index=dates, columns=list('ABCD'))
+
+print('\n=======================df:=======================\n', df)
+print('\n=======================df head:=======================\n', df.head())
+print('\n=======================df tail:=======================\n', df.tail(3))
+
+
+# Creating a DataFrame by passing a dict of objects that can be converted to series-like.
+df2 = pd.DataFrame({'A': 1.,
+                    'B': pd.Timestamp('20130102'),
+                    'C': pd.Series(1, index=list(range(4)), dtype='float32'),
+                    'D': np.array([3] * 4, dtype='int32'),
+                    'E': pd.Categorical(["test", "train", "test", "train"]),
+                   'F': 'foo'})
+print('\n========================df2:======================\n', df2)
+# The columns of the resulting DataFrame have different dtypes.
+print(df2.dtypes)
+
 
 
 
 
 # 相关链接
-# http://pandas.pydata.org/9
+# http://pandas.pydata.org/
+
+# http://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html   快速上手
