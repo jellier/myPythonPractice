@@ -11,27 +11,39 @@ import pandas as pd
 
 # Series对numpy的array进行了封装，对所有的数值添加了一个索引
 # Series是对一维数组进行的操作
+# The basic method to create a Series is to call:
+# s = pd.Series(data, index=index)
+# data can be: a Python dict / an ndarray / a scalar value (一个常量：like 5)
+# If data is an ndarray, index must be the same length as data. If no index is passed, one will be created having values [0, ..., len(data) - 1].
+
+# If data is a scalar value, an index must be provided. The value will be repeated to match the length of index.
+# pd.Series(5., index=['a', 'b', 'c', 'd', 'e'])
 
 print('===============Series==================')
 # Creating a Series by passing a list of values, letting pandas create a default integer index:
 obj = Series([4, 5, 6, -7])
 print(obj)
 
+
 print('index:', obj.index)
 print('values,', obj.values)
-
+print('===============')
 # 手动指定索引
 obj2 = Series([4, 7, -5, 3], index=['a', 'c', 'd', 'b'])
 print('obj2: \n', obj2)
 obj2['d'] = 0
 print('obj2 new: \n',obj2)
+print('obj2 dtype is:',obj2.dtype)
 
 print('f' in obj2)
 
 #  将字典转化为series，字典的key会变成series的索引
 sdata= {'beijing' :100000, 'shanghai':200000, 'tianjin':'300000'}
 obj3 = Series(sdata)
+print('=======obj3========')
 print(obj3)
+
+print('obj3 to numpy:\n', obj3.to_numpy)
 # 改变索引
 obj3.index=['bj', 'sh', 'tj']
 print(obj3)
@@ -44,6 +56,7 @@ data = {'city': ['shanghai', 'shanghai', 'shanghai', 'beijing', 'beijing'],
         'pop': [1.5, 1.7, 3.6, 2.4, 2.9]}
 frame = DataFrame(data)
 print(frame)
+print('==========frame end==========')
 # 支持按顺序显示
 frame2 = DataFrame(data,columns=['year', 'city', 'pop'])
 print(frame2)
@@ -56,7 +69,7 @@ print(frame2)
 
 frame2['isCapital'] = frame2.city == 'beijing'
 print(frame2)
-
+print('==========frame2 end==========')
 # 另一种为dataframe赋值的方式是字典的嵌套
 pop = {'beijing': {2008: 1.5, 2009: 2.0},
        'shanghai': {2008: 2.0, 2009: 3.6}
@@ -68,6 +81,11 @@ print(frame3)
 # 行和列的互换，也叫行列式的转置
 print(frame3.T)
 
+# The row and column labels can be accessed respectively by accessing the index and columns attributes:
+print(frame3.index)
+print(frame3.columns)
+
+print('==========frame3 end==========')
 # reindex---dataframe更有用的功能
 
 obj4 = Series([4.5, 7.2, -5.3, 3.6], index=['b', 'd', 'c', 'a'])
@@ -153,3 +171,6 @@ print(df2.dtypes)
 # http://pandas.pydata.org/
 
 # http://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html   快速上手
+# http://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html#cookbook  高级应用
+
+# http://pandas.pydata.org/pandas-docs/stable/getting_started/dsintro.html#dsintro   Series和DataFrame的具体说明
