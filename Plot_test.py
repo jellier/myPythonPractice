@@ -3,9 +3,6 @@
 # 安装过程中出现超时的错误，故重新安装了一遍
 # Matplotlib 是 Python 的绘图库。 它可与 NumPy 一起使用，提供了一种有效的 MatLab 开源替代方案
 
-# seaborn
-# pip3 install seaborn
-
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -42,6 +39,7 @@ import pandas as pd
 # plt.show()
 
 # 用测试数据绘制散点图
+# pandas 读取数据，matplotlib负责绘图
 # iris = pd.read_csv("iris_training.csv")
 # print (iris.head() )
 # iris.plot(kind="scatter", x="120", y="4")
@@ -49,8 +47,12 @@ import pandas as pd
 # plt.show()
 
 
+# seaborn ，warnings
+# pip3 install seaborn
+# seaborn 封装了matplotlib，更美观
+# warnings为python标准库
 import seaborn as sns
-import warnings   # python内置库
+import warnings
 warnings.filterwarnings("ignore")
 iris = pd.read_csv("./iris_training.csv")
 # #设置样式
@@ -69,8 +71,10 @@ iris = pd.read_csv("./iris_training.csv")
 # plt.scatter 绘制散点图
 # add_legend() 显示分类的描述信息
 # sns.FacetGrid(iris, hue="virginica", size=5).map(plt.scatter, "120", "4").add_legend()
+
 sns.set(style="white", color_codes=True)
 sns.FacetGrid(iris, hue="virginica", size=5).map(plt.scatter, "setosa", "versicolor").add_legend()
+
 # 没啥用，只是让pandas 的plot() 方法在pyCharm上显示
 plt.show()
 

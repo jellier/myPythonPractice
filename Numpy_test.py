@@ -20,11 +20,7 @@
 # NumPy的大部分代码都是用C语言写的，其底层算法在设计时就有着优异的性能，这使得NumPy比纯Python代码高效得多
 # 当然，NumPy也有其不足之处，由于NumPy使用内存映射文件以达到最优的数据读写性能，而内存的大小限制了其对TB级大文件的处理；此外，NumPy数组的通用性不及Python提供的list容器。因此，在科学计算之外的领域，NumPy的优势也就不那么明显
 
-# Numpy的应用：
-# NumPy 通常与 SciPy（Scientific Python）和 Matplotlib（绘图库）一起使用， 这种组合广泛用于替代 MatLab，是一个强大的科学计算环境，有助于我们通过 Python 学习数据科学或者机器学习。
-# SciPy 是一个开源的 Python 算法库和数学工具包。
-# SciPy 包含的模块有最优化、线性代数、积分、插值、特殊函数、快速傅里叶变换、信号处理和图像处理、常微分方程求解和其他科学与工程中常用的计算。
-# Matplotlib 是 Python 编程语言及其数值数学扩展包 NumPy 的可视化操作界面。它为利用通用的图形用户界面工具包，如 Tkinter, wxPython, Qt 或 GTK+ 向应用程序嵌入式绘图提供了应用程序接口（API）
+
 
 # numpy的安装：
 # 需要在terminal 中安装 pip3 install numpy
@@ -100,12 +96,21 @@ arr_slice[:] = 15
 print(arr6)
 print(arr_slice)
 
+# Numpy的应用：
+# NumPy 通常与 SciPy（Scientific Python）和 Matplotlib（绘图库）一起使用， 这种组合广泛用于替代 MatLab，是一个强大的科学计算环境，有助于我们通过 Python 学习数据科学或者机器学习。
+# SciPy 是一个开源的 Python 算法库和数学工具包。
+# SciPy 包含的模块有最优化、线性代数、积分、插值、特殊函数、快速傅里叶变换、信号处理和图像处理、常微分方程求解和其他科学与工程中常用的计算。
+# Matplotlib 是 Python 编程语言及其数值数学扩展包 NumPy 的可视化操作界面。它为利用通用的图形用户界面工具包，如 Tkinter, wxPython, Qt 或 GTK+ 向应用程序嵌入式绘图提供了应用程序接口（API）
+
 
 # 相关链接：
 # 具体使用，函数，属性：https://www.cnblogs.com/wj-1314/p/9722794.html
 # NumPy 官网 http://www.numpy.org/
 # NumPy 源代码：https://github.com/numpy/numpy
+# 比较全面的Numpy中文手册：https://www.runoob.com/numpy/numpy-tutorial.html
+
 # SciPy 官网：https://www.scipy.org/
 # SciPy 源代码：https://github.com/scipy/scipy
 # Matplotlib 官网：https://matplotlib.org/
 # Matplotlib 源代码：https://github.com/matplotlib/matplotlib
+
