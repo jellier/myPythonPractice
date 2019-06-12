@@ -1,5 +1,6 @@
 # requests库的使用，也是第三方库，对urllib的封装
 # pip3 install requests
+# ⼀句话——Python实现的简单易⽤的HTTP库
 
 import requests
 # url = 'http://httpbin.org/get'
