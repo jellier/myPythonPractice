@@ -34,6 +34,7 @@ content = requests.get('http://m.sohu.com/a/258728604_652515').text
 # <p><img .*? data-src="(.*?)">.*?(.*?)</p>
 
 # re.S叫做单行模式，简单来说，就是你用正则要匹配的内容在多行里，会增加你要匹配的难度，这时候使用re.S把每行最后的换行符\n当做正常的一个字符串来进行匹配的一种小技巧
+# 使用.*?而不是.* ，避免贪婪模式
 pattern = re.compile(r'<p><img .*? data-src="(.*?)">.*?(.*?)</p>', re.S)
 results = re.findall(pattern, content)
 print(results)
@@ -41,6 +42,7 @@ print(results)
 # 把结果格式化
 for result in results:
     url, name = result
+    # \s匹配任何空白字符，它相当于类[\t\n\r\f\v]
     print(url, re.sub('\s', '', name))
 
 # 关于爬虫
