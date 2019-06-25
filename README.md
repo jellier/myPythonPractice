@@ -9,6 +9,15 @@
 ##### with open的使用？
 ##### re库的用法？
 
+### 后续学习：
+#### 面向对象和多线程需要复习
+#### 爬虫框架Scrapy,PySpider
+#### Web框架 django,flask
+
+### 前端：bootstap,vue.js
+
+
+
 ### 文件操作的代码
 > file_op.py,主要是read,writ,close的使用
 > seek,readline(s)也是经常用到的方法
@@ -108,4 +117,9 @@ pip3 install autopep8
 > Matplotlib 是 Python 的绘图库。 它可与 NumPy 一起使用，提供了一种有效的 MatLab 开源替代方案。
 #### scipy
 > Scipy基于Numpy，科学计算库，有一些高阶抽象和物理模型。比方说做个傅立叶变换，这是纯数学的，用Numpy；做个滤波器，这属于信号处理模型了，在Scipy里找。
+
+
+
+
+
 
