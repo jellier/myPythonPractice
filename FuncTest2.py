@@ -17,6 +17,7 @@ def func():
 
 def sum(a):
     def add(b):
+        print('a is %s, b is %s' % (a, b))
         return a + b
     return add
 
@@ -24,8 +25,8 @@ def sum(a):
 num1 = func()
 num2 = sum(2)
 print(num2(4))
-print(type(num1))
-print(type(num2))
+print(type(num1))  # int
+print(type(num2))  # function
 ##########################################################################
 # 使用闭包实现计数器
 # 套路写法：
@@ -82,6 +83,7 @@ print(line1(20))
 line2 = a_line(5, 10)
 print(line2(10))
 print(line2(20))
+print('=======================================')
 #################################################################
 # 装饰器的使用
 # 引用time库
