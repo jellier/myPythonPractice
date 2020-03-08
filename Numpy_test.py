@@ -52,6 +52,9 @@ print(arr2 , 'arr2的类型是：', arr2.dtype)
 print(arr1 + arr2)
 
 print(arr2 * 10)
+print('对比下普通数组的*')
+arr_t = [1,2,3]
+print('arrt:', arr_t * 10)
 
 # 多于一个维度
 data = [[1,2,3], [4, 5, 6]]

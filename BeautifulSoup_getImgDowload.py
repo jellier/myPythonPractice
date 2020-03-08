@@ -29,9 +29,9 @@ def download_jpg(img_url, img_localPath):
     # 直到访问 Response.content 属性时才开始下载响应主体内容
     response = requests.get(img_url, stream = True)
     if response.status_code == 200:
-        # 'wb' ????
+        # 'wb' writebinary
         with open(img_localPath , 'wb') as f:
-            # ?????
+            #
             response.raw.deconde_Rcontent = True
             # requests库没有写入功能，需要shutil库配合使用，把response返回的内容写入到文件中
             shutil.copyfileobj(response.raw, f)

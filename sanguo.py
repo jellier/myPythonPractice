@@ -6,7 +6,7 @@ data = f.read().split('|')
 print(data)
 
 # 读取兵器的名称
-# 使用stip过滤无用的内容
+# 使用strip过滤无用的内容
 f2 = open('sanguo_weapon.txt')
 i = 1
 for line in f2.readlines():
