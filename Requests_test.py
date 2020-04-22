@@ -35,7 +35,9 @@ content = requests.get('http://m.sohu.com/a/258728604_652515').text
 
 # re.S叫做单行模式，简单来说，就是你用正则要匹配的内容在多行里，会增加你要匹配的难度，这时候使用re.S把每行最后的换行符\n当做正常的一个字符串来进行匹配的一种小技巧
 # 使用.*?而不是.* ，避免贪婪模式
+# compile 函数用于编译正则表达式，生成一个正则表达式（ Pattern ）对象，供 match() 和 search() 等函数使用
 pattern = re.compile(r'<p><img .*? data-src="(.*?)">.*?(.*?)</p>', re.S)
+# match 和 search 是匹配一次 ，findall 匹配所有
 results = re.findall(pattern, content)
 print(results)
 

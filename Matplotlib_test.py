@@ -8,8 +8,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
-# plt.plot([1,3,5] , [4,8, 10])
-# plt.show()
+plt.plot([1,3,5] , [4,8, 10])
+plt.show()
 
 # 绘制一条正铉全线
 # x = np.linspace(-np.pi,np.pi, 100) # x轴的定义域为-3.14--3.14 ,中间100个元素
@@ -67,7 +67,7 @@ iris = pd.read_csv("./iris_training.csv")
 
 
 # FacetGrid 一般绘图函数
-# hue 彩色显示分类0/1/2
+# hue 彩色显示分类0/1/2     否则
 # plt.scatter 绘制散点图
 # add_legend() 显示分类的描述信息
 # sns.FacetGrid(iris, hue="virginica", size=5).map(plt.scatter, "120", "4").add_legend()

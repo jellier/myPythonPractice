@@ -95,6 +95,7 @@ print('l2的值是：%s' % l2)
 # 如果()后面跟的是特殊元字符如   (adc)*   那么*控制的前导字符就是()里的整体内容，不再是前导一个字符
 m = re.search("(a4)+", "a4a4a4a4a4dg4g654gb")  # 匹配一个或多个a4
 m2 = m.group()
+print('m的值是：%s' % m)
 print('m2的值是：%s' % m2)
 
 # 匹配 (a) (\d0-9的数字) (+可以是1个到多个0-9的数字)
@@ -126,10 +127,10 @@ print('n的值是：%s' % n)
 # 无分组
 origin = "hello egon bcd egon lge egon acd 19"
 r = re.match(r"h\w+", origin)  # match，从起始位置开始匹配，匹配成功返回一个对象，未匹配成功返回None
-print('r的group值是：%s' % r.group())     # 获取匹配到的所有结果，不管有没有分组将匹配到的全部拿出来
+print('\nr的group值是：%s' % r.group())     # 获取匹配到的所有结果，不管有没有分组将匹配到的全部拿出来
 print(r.groups())    # 获取模型中匹配到的分组结果，只拿出匹配到的字符串中分组部分的结果
 # 获取模型中匹配到的分组结果，只拿出匹配到的字符串中分组部分定义了key的组结果
-print('r的groupdict值是：%s' % r.groupdict())
+print('r的groupdict值是：%s\n' % r.groupdict())
 # 输出结果
 # hello     匹配到的全部拿出来
 # ()        没有分组所以为空
@@ -142,7 +143,7 @@ r1 = re.match(r"h(\w+)", origin)  # match，从起始位置开始匹配，匹配
 print('r1的group值是：%s' % r1.group())     # 获取匹配到的所有结果，不管有没有分组将匹配到的全部拿出来
 print('r1的groups值是：%s' % r1.groups())    # 获取模型中匹配到的分组结果，只拿出匹配到的字符串中分组部分的结果
 # 获取模型中匹配到的分组结果，只拿出匹配到的字符串中分组部分定义了key的组结果
-print('r1的groupdict值是：%s' % r1.groupdict())
+print('r1的groupdict值是：%s\n' % r1.groupdict())
 # 输出结果
 # hello         匹配到的全部拿出来
 # ('ello',)     有分组，在匹配到的字符串中拿出分组的部分
