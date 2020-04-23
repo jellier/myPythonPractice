@@ -9,6 +9,7 @@ import sys
 # 将图片填充为正方形
 def fill_image(image):
     width, height = image.size
+    print(image.size)
     # 选取长和宽中较大值作为新图片的尺寸
     new_image_length = width if width > height else height
     # 生成新图片[白底]
@@ -55,6 +56,9 @@ if __name__ == '__main__':
     # image.show()
     image = fill_image(image)
     image_list = cut_image(image)
+    # str.split(str="", num=string.count(str))
+    # 如果第二个参数 num 有指定值，则分割为 num+1 个子字符串
+    # 这里以.为分隔符，分隔成两个子字符串
     newFile_path = file_path.split('.', 1)
     save_images(image_list, newFile_path[0])
 

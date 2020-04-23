@@ -18,35 +18,39 @@ import requests
 
 # 一个爬取图片链接的小例子
 import re
-# 随便搜一个结构简单的带图片页面
-content = requests.get('http://m.sohu.com/a/258728604_652515').text
-# print(content)
+def main():
+    # 随便搜一个结构简单的带图片页面
+    content = requests.get('http://m.sohu.com/a/258728604_652515').text
+    # print(content)
 
-# 原例子：
-# < div class ="grid-item work-thumbnail" >
-# < a href="(.*?)".*?title">(.*?)</div>
-# < div class ="author" > LynnWei < / div >
+    # 原例子：
+    # < div class ="grid-item work-thumbnail" >
+    # < a href="(.*?)".*?title">(.*?)</div>
+    # < div class ="author" > LynnWei < / div >
 
-# 我找的页面的图片结构
-# <p><img class="content-image" data-src="//5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20181011/01f73103f5fc45dc8c686061dd9307d9.jpeg"></p>
-# <p>让我们以新时代少年的名义起誓，从小学习做人，从小学习立志，从小学习创造！让我们面向五星红旗，向伟大的祖国母亲致敬 ！</p>
-# 改成以下：
+    # 我找的页面的图片结构
+    # <p><img class="content-image" data-src="//5b0988e595225.cdn.sohucs.com/q_70,c_zoom,w_640/images/20181011/01f73103f5fc45dc8c686061dd9307d9.jpeg"></p>
+    # <p>让我们以新时代少年的名义起誓，从小学习做人，从小学习立志，从小学习创造！让我们面向五星红旗，向伟大的祖国母亲致敬 ！</p>
+    # 改成以下：
+    # <p><img .*? data-src="(.*?)">.*?(.*?)</p>
 
-# <p><img .*? data-src="(.*?)">.*?(.*?)</p>
+    # re.S叫做单行模式，简单来说，就是你用正则要匹配的内容在多行里，会增加你要匹配的难度，这时候使用re.S把每行最后的换行符\n当做正常的一个字符串来进行匹配的一种小技巧
+    # 使用.*?而不是.* ，避免贪婪模式
+    # compile 函数用于编译正则表达式，生成一个正则表达式（ Pattern ）对象，供 match() 和 search() 等函数使用
+    pattern = re.compile(r'<p><img .*? data-src="(.*?)">.*?(.*?)</p>', re.S)
+    # match 和 search 是匹配一次 ，findall 匹配所有
+    results = re.findall(pattern, content)
+    # print(results)
 
-# re.S叫做单行模式，简单来说，就是你用正则要匹配的内容在多行里，会增加你要匹配的难度，这时候使用re.S把每行最后的换行符\n当做正常的一个字符串来进行匹配的一种小技巧
-# 使用.*?而不是.* ，避免贪婪模式
-# compile 函数用于编译正则表达式，生成一个正则表达式（ Pattern ）对象，供 match() 和 search() 等函数使用
-pattern = re.compile(r'<p><img .*? data-src="(.*?)">.*?(.*?)</p>', re.S)
-# match 和 search 是匹配一次 ，findall 匹配所有
-results = re.findall(pattern, content)
-print(results)
+    # 把结果格式化
+    for result in results:
+        url, name = result
+        # \s匹配任何空白字符，它相当于类[\t\n\r\f\v]
+        print(url, re.sub('\s', '', name))
 
-# 把结果格式化
-for result in results:
-    url, name = result
-    # \s匹配任何空白字符，它相当于类[\t\n\r\f\v]
-    print(url, re.sub('\s', '', name))
+
+if __name__ == "__main__" :
+    main()
 
 # 关于爬虫
 # 一、爬虫基本流程

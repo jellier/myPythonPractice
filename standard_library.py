@@ -1,16 +1,16 @@
 # 日常应用比较广泛的模块是：
 # 1. 文字处理的 re
-# 2. 日期类型的time、datetime
-# 3. 数字和数学类型的math、random
-# 4. 文件和目录访问的pathlib、os.path
-# 5. 数据压缩和归档的tarfile
-# 6. 通用操作系统的os、logging、argparse
+# 2. 日期类型的 time、datetime
+# 3. 数字和数学类型的 math、random
+# 4. 文件和目录访问的 pathlib、os.path
+# 5. 数据压缩和归档的 tarfile
+# 6. 通用操作系统的 os、logging、argparse
 # 7. 多线程的 threading、queue
 # 8. Internet数据处理的 base64 、json、urllib
 # 9. 结构化标记处理工具的 html、xml
-# 10. 开发工具的unitest
+# 10. 开发工具的 unitest
 # 11. 调试工具的 timeit
-# 12. 软件包发布的venv
+# 12. 软件包发布的 venv
 # 13. 运行服务的__main__
 
 
@@ -26,7 +26,7 @@ import random
 import datetime
 import time
 import re
-print('=============reR================')
+print('=============1. reR================')
 # p = re.compile('..')
 p = re.compile('.{3}')
 print(p.match('abc'))
@@ -64,7 +64,7 @@ print(p4)
 # time和datetime模块
 # time用于日期和时间的查看，datetime用于日期和时间的修改，比如获得十分钟后的时间
 
-print('=============time================')
+print('=============2.1 time================')
 print(time.time())
 print('localtime：', time.localtime())  # 返回一个time.struct_time时间元组
 print('localtime.tm_year：', time.localtime().tm_year)
@@ -76,7 +76,7 @@ print(
 print('strftime：', time.strftime('%Y-%m-%d %H:%M:%S'))  # strftime 方法可以用来格式化日期
 print('strftime：', time.strftime('%Y%m%d'))
 
-print('=============datetime================')
+print('=============2.2 datetime================')
 nowtime = datetime.datetime.now()
 print('当前时间是：', nowtime)
 # 获得10分钟后的时间
@@ -93,12 +93,12 @@ print('oneday 10天后是：', one_day + new_date)
 # 数学相关库主要用在机器学习和深度学习中
 # 比如math中的sin 和 cos的计算
 # random经常用于软件测试
-print('=============math================')
+print('=============3. math================')
 print('random随机取整数', random.randint(1, 5))
 print('random随机取字符串', random.choice(['aa', 'bb', 'cc']))
 
 
-print('=============file================')
+print('=============4. file================')
 # os.path 和 pathlib
 # pathlib: https://docs.python.org/3/library/pathlib.html
 print('当前路径：', os.path.abspath('.'))   # 根据相对路径获取绝对路径
