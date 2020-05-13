@@ -8,7 +8,7 @@ import re
 import json
 
 
-def parse_page(url):
+def parsePage(url):
     headers = {
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
         "Accept-Language": "zh-CN,zh;q=0.8",
@@ -80,15 +80,13 @@ def parse_page(url):
         }
         poems.append(poem)
 
-    # for poem in poems:
-    #     print(poem)
-    #     print('---'*80)
+    for poem in poems:
+        print(poem)
+        print('---'*80)
     return poems
 
-# step4 将json格式数据写入文件
-
-
 def saveJson(_poems):
+    # step4 将json格式数据写入文件
     # 不能使用write，write不支持json或者字典格式
     # 使用json库的dump方法
     with open('crawlPoetry.json', 'w', encoding='utf-8') as file_obj:
@@ -111,7 +109,7 @@ def main():
         不同的写法：
         url = 'https://www.gushiwen.org/default_%s.aspx'%page
         '''
-        poems = parse_page(url)
+        poems = parsePage(url)
         allPoem.append(poems)
     print('采集完成')
     saveJson(allPoem)
