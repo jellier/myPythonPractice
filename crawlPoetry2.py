@@ -1,5 +1,4 @@
-# 原文地址：https://www.jianshu.com/p/3bf531bb50c2
-# 获取古诗词网
+# 获取古诗词网唐代作者信息
 # 使用BeautifulSoup匹配页面元素
 import requests
 import codecs

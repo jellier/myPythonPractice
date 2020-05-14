@@ -1,4 +1,3 @@
-# 原文地址：https://zhuanlan.zhihu.com/p/61855418
 # 获取古诗词网"推荐"诗词（共10页），包括诗词名、作者、朝代、诗词内容，并存储到文件中
 # 使用正则表达式匹配页面元素
 # 正则的关键是findall有分组
@@ -8,36 +7,45 @@ import re
 import json
 
 
-def parsePage(url):
+# step1. 获取整个页面
+def downloadPage(url):
     headers = {
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
         "Accept-Language": "zh-CN,zh;q=0.8",
         "Connection": "close",
-        "Cookie": "_gauges_unique_hour=1; _gauges_unique_day=1; _gauges_unique_month=1; _gauges_unique_year=1; _gauges_unique=1",
+        "Cookie": "_gauges_unique_hour=1; _gauges_unique_day=1; _gauges_unique_month=1;\
+         _gauges_unique_year=1; _gauges_unique=1",
         "Referer": "http://www.infoq.com",
         "Upgrade-Insecure-Requests": "1",
-        "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.98 Safari/537.36 LBBROWSER"
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML,\
+         like Gecko) Chrome/81.0.4044.138 Safari/537.36"
     }
-    # step1. 获取整个页面
+
     response = requests.get(url, headers)
-    text = response.text
+    _html = response.text
+    return _html
+
+
+def parseHtml(_html):
 
     # step2. 筛选页面信息
     # \s匹配任何空白字符，它相当于类[\t\n\r\f\v]
-    # 使用.*?而不是.* ，避免贪婪模式
     # 使用.*?而不是.* ，避免贪婪模式
     # 元字符.可以匹配任意字符，除了换行符，当re.DOTALL标记被指定时，则可以匹配包括换行符的任意字符
     '''
         以下几句都用到了findall有分组：只将匹配到的字符串里，组的部分放到列表里返回
     '''
-    titles = re.findall(r'<div\sclass="cont">.*?<b>(.*?)</b>', text, re.DOTALL)
+    titles = re.findall(
+        r'<div\sclass="cont">.*?<b>(.*?)</b>',
+        _html,
+        re.DOTALL)
     '''
         .*? # 非贪婪匹配到<b>标签
         (.*?) # 非贪婪匹配从<b>到</b>标签的文字
     '''
     dynasties = re.findall(
         r'<p class="source">.*?<a.*?>(.*?)</a>',
-        text,
+        _html,
         re.DOTALL)
     '''
         .*? # 非贪婪匹配到<a>标签
@@ -46,7 +54,7 @@ def parsePage(url):
     '''
     authors = re.findall(
         r'<p class="source">.*?<a.*?>.*?<a.*?>(.*?)</a>',
-        text,
+        _html,
         re.DOTALL)
     '''
         .*? # P标签下面有两个a标签，一个a标签是年代，一个是名字
@@ -56,7 +64,7 @@ def parsePage(url):
     '''
     contents_tags = re.findall(
         r'<div class="contson" .*?>(.*?)</div>',
-        text,
+        _html,
         re.DOTALL)
 
     contents = []
@@ -82,10 +90,11 @@ def parsePage(url):
 
     for poem in poems:
         print(poem)
-        print('---'*80)
+        print('---' * 20)
     return poems
 
-def saveJson(_poems):
+
+def saveData(_poems):
     # step4 将json格式数据写入文件
     # 不能使用write，write不支持json或者字典格式
     # 使用json库的dump方法
@@ -109,10 +118,11 @@ def main():
         不同的写法：
         url = 'https://www.gushiwen.org/default_%s.aspx'%page
         '''
-        poems = parsePage(url)
+        pageHtml = downloadPage(url)
+        poems = parseHtml(pageHtml)
         allPoem.append(poems)
     print('采集完成')
-    saveJson(allPoem)
+    saveData(allPoem)
     print('存储完成')
 
 
