@@ -90,7 +90,7 @@ def parseHtml(_html):
 
     for poem in poems:
         print(poem)
-        print('---' * 20)
+        print('---' * 40)
     return poems
 
 
