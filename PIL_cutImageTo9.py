@@ -51,7 +51,7 @@ def save_images(image_list, newFile_path):
 
 
 if __name__ == '__main__':
-    file_path = "image/bl.jpg"
+    file_path = "image/HarryPotter.jpg"
     image = Image.open(file_path)
     # image.show()
     image = fill_image(image)
