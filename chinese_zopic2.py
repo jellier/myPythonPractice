@@ -12,21 +12,29 @@ zodiac_days = ((1, 20), (2, 19), (3, 21), (4, 21), (5, 21), (6, 22), (7, 23), (8
 int_month = int(input('请输入出生月份：'))
 int_day = int(input('请输入出生日期：'))
 
-# for zd_num in range(len(zodiac_days)):
-#     if zodiac_days[zd_num] >= (int_month, int_day):
-#
-#         print('您的星座是：' + zodiac_name[zd_num])
-#         break
-#     elif int_month == 12 and int_day > 23:
-#         print('您的星座是：' + zodiac_name[0])
-#         break
+for zd_num in range(len(zodiac_days)):
+    if zodiac_days[zd_num] >= (int_month, int_day):
+        print('您的星座是：' + zodiac_name[zd_num])
+        break
+    elif int_month == 12 and int_day > 23:
+        print('您的星座是：' + zodiac_name[0])
+        break
 
 
 # while 循环方式
-n= 0
-while zodiac_days[n] < (int_month, int_day):
-    if int_month == 12 and int_day <= 23:
-        break
-    n += 1
-print('您的星座是:' + zodiac_name[n])
+# n= 0
+# while1
+# while zodiac_days[n] < (int_month, int_day):
+#     if int_month == 12 and int_day <= 23:
+#         break
+#     n += 1
+
+# while2
+# if int_month == 12 and int_day > 23:
+#     n = 0
+# else:
+#     while zodiac_days[n] < (int_month, int_day):
+#         n += 1
+#
+# print('您的星座是:' + zodiac_name[n])
 

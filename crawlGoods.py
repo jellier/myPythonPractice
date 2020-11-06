@@ -5,7 +5,7 @@ import json
 
 def getUrls():
     '''
-        step1.获取前5页商品的所有地址
+        step1.获取前20页商品的所有地址
         search_url:搜索结果接口
         key_word：搜索关键字，比如"地摊玩具"
         begin_page：当前页，页面底部的分页，高亮的是当前页
@@ -17,7 +17,7 @@ def getUrls():
     key_word = "%B5%D8%CC%AF%CD%E6%BE%DF"  # 地摊玩具
     key_word = "%B5%D8%CC%AF%CD%E6%BE%DF+%B7%A2%B9%E2"  # 地摊玩具+发光
     begin_page = 1
-    for i in range(5):
+    for i in range(20):
         start_index = 0
 
         for j in range(3):
